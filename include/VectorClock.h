@@ -19,5 +19,4 @@ public:
     bool happensAfter(const VectorClock& other) const; 
 
     size_t getClock(std::thread::id tid) const;
-    // ... (optional) helper to print the clock for debugging ...
 };

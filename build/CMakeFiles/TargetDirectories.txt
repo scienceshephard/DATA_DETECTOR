@@ -1,0 +1,5 @@
+/home/shephard/Desktop/Work/data_detector/build/CMakeFiles/detector_lib.dir
+/home/shephard/Desktop/Work/data_detector/build/CMakeFiles/detector_main.dir
+/home/shephard/Desktop/Work/data_detector/build/CMakeFiles/race_example.dir
+/home/shephard/Desktop/Work/data_detector/build/CMakeFiles/edit_cache.dir
+/home/shephard/Desktop/Work/data_detector/build/CMakeFiles/rebuild_cache.dir
