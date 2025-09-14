@@ -12,10 +12,12 @@ std::mutex mtx;
 void increment() {
     for (int i = 0; i < 100000; ++i) {
         // The user must use our macros for the tool to work in this simple model.
-        mutex_lock(&mtx); // Using our wrapped version
+        
+        // mutex_lock(&mtx); // Comment this out to cause a race
         int temp = READ(shared_value); // Instrumented read
         WRITE(shared_value, temp + 1); // Instrumented write
-        // mutex_unlock(&mtx);
+        
+        // mutex_unlock(&mtx);  //Comment this out to cause a race
     }
 }
 
