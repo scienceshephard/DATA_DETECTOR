@@ -4,6 +4,21 @@ project(DataRaceDetector)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# --- ThreadSanitizer Configuration ---
+# Check if the user wants to build with TSan, e.g., cmake -DUSE_TSAN=ON ..
+option(USE_TSAN "Enable ThreadSanitizer" OFF)
+
+if(USE_TSAN)
+    # Add the ThreadSanitizer flags for both compilation and linking
+    add_compile_options(-fsanitize=thread)
+    add_link_options(-fsanitize=thread)
+    
+    # On some systems (Linux), you might also need to explicitly link against the TSan library.
+    # add_link_options(-fuse-ld=lld) # Optional: Using the LLD linker can be better with sanitizers.
+    
+    message(STATUS "Building with ThreadSanitizer enabled")
+endif()
+
 # Add the main include directory for ALL targets (detector_lib, detector_main)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 

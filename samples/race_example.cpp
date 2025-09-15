@@ -11,7 +11,7 @@ void increment() {
     for (int i = 0; i < 100000; ++i) {
         // mutex_lock(&mtx); // Comment this out to cause a race
         int temp = READ(shared_value); // Instrumented read
-        WRITE(shared_value, temp + 1); // Instrumented write
+        // WRITE(shared_value, temp + 1); // Instrumented write
         
         // mutex_unlock(&mtx);  //Comment this out to cause a race
     }
