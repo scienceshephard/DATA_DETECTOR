@@ -10,3 +10,5 @@
 # Why Didn't You See "DATA RACE DETECTED!" Messages?
 
 <p>IN the increment method of the race_exaple.cpp file if you uncomment it you will see the data race detected message.</p>
+<p>First cd into the build folder and run 'cmake ..' the run 'make' </p>
+<p> Then run this command: valgrind --tool=helgrind ./race_example </p>
