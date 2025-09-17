@@ -1,0 +1,3 @@
+/usr/bin/cmake -E rm -f CMakeFiles/detector_main.dir/objects.a
+/usr/bin/x86_64-w64-mingw32-ar qc CMakeFiles/detector_main.dir/objects.a @CMakeFiles/detector_main.dir/objects1.rsp
+/usr/bin/x86_64-w64-mingw32-g++  -static -Wl,--whole-archive CMakeFiles/detector_main.dir/objects.a -Wl,--no-whole-archive -o detector_main.exe -Wl,--out-implib,libdetector_main.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/detector_main.dir/linkLibs.rsp

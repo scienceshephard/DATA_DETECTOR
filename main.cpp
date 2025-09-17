@@ -17,7 +17,7 @@ int main(){
             std::thread backgroundThread([](){ 
                 for (int i = 0; i < 5; i++)
                 {
-                    std::cout << "ssks" << std::endl;
+                    std::cout << "Running at the bacground" << std::endl;
                 }
                 
              });

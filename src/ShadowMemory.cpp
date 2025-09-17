@@ -1,5 +1,9 @@
 #include "ShadowMemory.h"
 #include <iostream>
+#include <mutex> // Add this include
+
+// Add a global mutex for thread-safe output
+static std::mutex output_mutex;
 
 // Gets the metadata for a given memory address.
 // If it doesn't exist, it is created and initialized.
@@ -46,6 +50,7 @@ void ShadowMemory::checkRace(const void* addr, bool is_write, const VectorClock&
             // holds NONE of the candidate locks.
             if (!common_lock_found) {
                 // 3. Report Tier 1 Race (HB & Lockset Violation)
+                std::lock_guard<std::mutex> output_lock(output_mutex); // Add thread-safe output
                 std::cerr << "========================" << std::endl;
                 std::cerr << "DATA RACE DETECTED!" << std::endl;
                 std::cerr << "Location: " << addr << std::endl;
@@ -59,8 +64,6 @@ void ShadowMemory::checkRace(const void* addr, bool is_write, const VectorClock&
         // 4. Update Candidate Lockset
         if (meta.candidate_locks.empty()) {
             // First access: initialize candidate set to the locks held *right now*
-            // Change: current_thread_locks.getLocks() returns std::set<const void*>
-            // which matches meta.candidate_locks (std::set<const void*>)
             meta.candidate_locks = current_thread_locks.getLocks();
         } else {
             if (!common_lock_found) {
@@ -70,16 +73,12 @@ void ShadowMemory::checkRace(const void* addr, bool is_write, const VectorClock&
             } else {
                 // Standard case: Intersect the current candidate set with the locks
                 // held by the current thread on this access.
-                // Change: new_candidate_set is now std::set<const void*>
                 std::set<const void*> new_candidate_set;
                 for (const auto& candidate_lock : meta.candidate_locks) {
                     if (current_thread_locks.contains(candidate_lock)) {
-                        // Change: candidate_lock is const void*, which matches
-                        // new_candidate_set's type (std::set<const void*>)
                         new_candidate_set.insert(candidate_lock);
                     }
                 }
-                // Change: Both sides are now std::set<const void*>
                 meta.candidate_locks = std::move(new_candidate_set);
             }
         }

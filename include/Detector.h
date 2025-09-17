@@ -1,4 +1,5 @@
 #pragma once
+#include <pthread.h>
 
 // These functions are called by the hooking mechanism (e.g., our macros or LD_PRELOAD)
 void handleThreadStart();

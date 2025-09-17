@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libdetector_lib.a CMakeFiles/detector_lib.dir/src/VectorClock.cpp.obj CMakeFiles/detector_lib.dir/src/LockSet.cpp.obj CMakeFiles/detector_lib.dir/src/ShadowMemory.cpp.obj CMakeFiles/detector_lib.dir/src/Detector.cpp.obj CMakeFiles/detector_lib.dir/src/Hook.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libdetector_lib.a

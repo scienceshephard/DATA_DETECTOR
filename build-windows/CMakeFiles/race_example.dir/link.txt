@@ -1,0 +1,3 @@
+/usr/bin/cmake -E rm -f CMakeFiles/race_example.dir/objects.a
+/usr/bin/x86_64-w64-mingw32-ar qc CMakeFiles/race_example.dir/objects.a @CMakeFiles/race_example.dir/objects1.rsp
+/usr/bin/x86_64-w64-mingw32-g++  -static -Wl,--whole-archive CMakeFiles/race_example.dir/objects.a -Wl,--no-whole-archive -o race_example.exe -Wl,--out-implib,librace_example.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/race_example.dir/linkLibs.rsp
